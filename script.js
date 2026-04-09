@@ -176,6 +176,14 @@ if (skillsCarousel && skillsCenter && skillChips.length) {
   };
 
   skillChips.forEach((chip, index) => {
+    const openDocs = () => {
+      const url = chip.dataset.doc;
+      if (!url) {
+        return;
+      }
+      window.open(url, '_blank', 'noopener,noreferrer');
+    };
+
     chip.addEventListener('mouseenter', () => {
       hoveredIndex = index;
       rotationActive = false;
@@ -185,6 +193,15 @@ if (skillsCarousel && skillsCenter && skillChips.length) {
     chip.addEventListener('mouseleave', () => {
       hoveredIndex = null;
       rotationActive = true;
+    });
+
+    chip.addEventListener('click', openDocs);
+
+    chip.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openDocs();
+      }
     });
   });
 
