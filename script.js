@@ -33,15 +33,6 @@ const setActiveLink = () => {
 window.addEventListener('scroll', setActiveLink);
 setActiveLink();
 
-const workViewport = document.getElementById('work-viewport');
-const prev = document.getElementById('work-prev');
-const next = document.getElementById('work-next');
-
-if (workViewport && prev && next) {
-  const shift = () => Math.min(workViewport.clientWidth * 0.86, 560);
-  prev.addEventListener('click', () => workViewport.scrollBy({ left: -shift(), behavior: 'smooth' }));
-  next.addEventListener('click', () => workViewport.scrollBy({ left: shift(), behavior: 'smooth' }));
-}
 
 const billButtons = [...document.querySelectorAll('.bill-btn')];
 const pricingCards = [...document.querySelectorAll('.price-card')];
@@ -218,3 +209,150 @@ if (skillsCarousel && skillsCenter && skillChips.length) {
     }
   });
 }
+
+// IDE / Code Editor Component Interactivity
+const ideFiles = {
+  profile: {
+    name: 'profile.json',
+    icon: 'json',
+    iconText: '{}',
+    lines: 10,
+    code: `{
+  <span class="token-key">"name"</span>: <span class="token-string">"Vinil Naik"</span>,
+  <span class="token-key">"role"</span>: <span class="token-string">"CS Student & Automation Engineer"</span>,
+  <span class="token-key">"focus"</span>: [
+    <span class="token-string">"Design Thinking"</span>,
+    <span class="token-string">"Agentic Workflows"</span>,
+    <span class="token-string">"Full-Stack Engineering"</span>
+  ],
+  <span class="token-key">"bio"</span>: <span class="token-string">"I blend product design, backend logic, and automation into clean systems."</span>
+}`
+  },
+  build: {
+    name: 'what_i_build.py',
+    icon: 'py',
+    iconText: 'py',
+    lines: 17,
+    code: `<span class="token-keyword">def</span> <span class="token-function">get_recent_projects</span>():
+    <span class="token-keyword">return</span> {
+        <span class="token-string">"trade_simulator"</span>: {
+            <span class="token-string">"stack"</span>: [<span class="token-string">"React"</span>, <span class="token-string">"Vite"</span>, <span class="token-string">"Supabase"</span>, <span class="token-string">"Groq"</span>],
+            <span class="token-string">"features"</span>: [
+                <span class="token-string">"Groq LLM market analyst"</span>,
+                <span class="token-string">"d3-hierarchy heatmaps"</span>
+            ]
+        },
+        <span class="token-string">"hr_automation_agent"</span>: {
+            <span class="token-string">"stack"</span>: [<span class="token-string">"n8n"</span>, <span class="token-string">"FastAPI"</span>, <span class="token-string">"PostgreSQL"</span>, <span class="token-string">"GPT-4o-mini"</span>],
+            <span class="token-string">"features"</span>: [
+                <span class="token-string">"Sentence Transformers resume ranking"</span>,
+                <span class="token-string">"4-stage automated pipeline"</span>
+            ]
+        }
+    }`
+  },
+  skills: {
+    name: 'skills_manifest.yml',
+    icon: 'yml',
+    iconText: 'yml',
+    lines: 14,
+    code: `<span class="token-comment"># Developer Skillset Manifest</span>
+<span class="token-key">languages</span>:
+  - <span class="token-string">Python</span>
+  - <span class="token-string">JavaScript</span>
+  - <span class="token-string">C++</span>
+<span class="token-key">frameworks</span>:
+  - <span class="token-string">React.js</span>
+  - <span class="token-string">Node.js</span>
+<span class="token-key">automation_tools</span>:
+  - <span class="token-string">n8n</span>
+  - <span class="token-string">GitHub Actions</span>
+<span class="token-key">databases</span>:
+  - <span class="token-string">MongoDB</span>
+  - <span class="token-string">PostgreSQL</span>`
+  },
+  workflow: {
+    name: 'workflow_pipeline.js',
+    icon: 'js',
+    iconText: 'js',
+    lines: 15,
+    code: `<span class="token-keyword">async function</span> <span class="token-function">executeProjectWorkflow</span>(project) {
+  <span class="token-comment">// 1. Analyze user flows and details</span>
+  <span class="token-keyword">const</span> spec = <span class="token-function">analyzeUserFlow</span>(project.requirements);
+  
+  <span class="token-comment">// 2. Build backend APIs and agent nodes</span>
+  <span class="token-keyword">const</span> backend = <span class="token-keyword">await</span> <span class="token-function">deploySecureBackend</span>(spec);
+  
+  <span class="token-comment">// 3. Polish and animate interface</span>
+  <span class="token-keyword">const</span> ui = <span class="token-function">designPremiumUI</span>(spec, backend);
+  
+  <span class="token-keyword">return</span> {
+    status: <span class="token-string">"successfully_shipped"</span>,
+    experience: <span class="token-string">"seamless"</span>
+  };
+}`
+  }
+};
+
+const fileItems = document.querySelectorAll('.file-item');
+const tabItems = document.querySelectorAll('.ide-tab');
+const codeContent = document.getElementById('code-content');
+const lineNumbersContainer = document.getElementById('line-numbers');
+
+const selectFile = (fileKey) => {
+  const fileData = ideFiles[fileKey];
+  if (!fileData) return;
+
+  // Update fileExplorer items active status
+  fileItems.forEach(item => {
+    if (item.dataset.file === fileKey) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+
+  // Update tabs active status
+  tabItems.forEach(tab => {
+    if (tab.dataset.file === fileKey) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  // Render code
+  if (codeContent) {
+    codeContent.innerHTML = fileData.code;
+  }
+
+  // Render line numbers
+  if (lineNumbersContainer) {
+    let lineNumsHTML = '';
+    for (let i = 1; i <= fileData.lines; i++) {
+      lineNumsHTML += `<span>${i}</span>`;
+    }
+    lineNumbersContainer.innerHTML = lineNumsHTML;
+  }
+};
+
+// Add event listeners to file list and tab bar items
+fileItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const fileKey = item.dataset.file;
+    selectFile(fileKey);
+  });
+});
+
+tabItems.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const fileKey = tab.dataset.file;
+    selectFile(fileKey);
+  });
+});
+
+// Initialize with first file
+if (fileItems.length && codeContent) {
+  selectFile('profile');
+}
+

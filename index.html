@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 </head>
@@ -23,19 +23,15 @@
         <a class="avatar" href="#hero" aria-label="Go to home section">
             <img src="images/profile.jpeg" alt="Designer profile" />
         </a>
-
         <button class="menu-toggle" aria-label="Toggle menu">Menu</button>
-
         <nav class="main-nav" aria-label="Main navigation">
             <a href="#about" class="is-active">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
         </nav>
-
         <button class="theme-toggle" aria-label="Theme indicator">
             ☾
         </button>
-
         <a class="btn btn-primary" href="#contact">Contact</a>
     </header>
 
@@ -47,7 +43,7 @@
             </h1>
             <article class="hero-card reveal-up" id="hero-card">
                 <img src="images/profile.jpeg" alt="Profile portrait" />
-                <p>CRAFTING ELEGANT, HIGH-IMPACT<br />DIGITAL EXPERIENCES</p>
+                <p>AGENTIC AI · FULL-STACK · RAG</p>
             </article>
         </section>
 
@@ -124,99 +120,154 @@
         <section class="services section" id="about">
             <h2 class="section-title reveal-up">About <em>Me.</em></h2>
 
-            <div class="service-stack">
-                <article class="service-card reveal-up">
-                    <div class="service-top">
-                        <span class="service-icon">👤</span>
-                        <h3>Creative Profile</h3>
-                        <span class="service-no">01</span>
+            <div class="ide-container reveal-up">
+                <!-- Window title bar -->
+                <div class="ide-header">
+                    <div class="ide-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
                     </div>
-                    <p>I am Vinil, a developer who blends design thinking with automation and product logic. I build
-                        portfolio-style experiences, internal tools, and workflow-driven interfaces that feel polished,
-                        clear, and purposeful.</p>
-                </article>
+                    <div class="ide-title">vinil-naik - Editor</div>
+                    <div class="ide-actions">
+                        <span class="ide-action-icon">⚙️</span>
+                    </div>
+                </div>
 
-                <article class="service-card reveal-up">
-                    <div class="service-top">
-                        <span class="service-icon">✦</span>
-                        <h3>What I Build</h3>
-                        <span class="service-no">02</span>
-                    </div>
-                    <p>I design and ship products like trade simulators, HR automation agents, dashboards, landing
-                        pages, and workflow assistants. The focus is always the same: make the interaction feel
-                        simple, reliable, and efficient.</p>
-                </article>
+                <div class="ide-body">
+                    <!-- Sidebar: File Explorer -->
+                    <aside class="ide-sidebar">
+                        <div class="sidebar-title">EXPLORER</div>
+                        <div class="folder-section">
+                            <div class="folder-header">
+                                <span class="chevron">▼</span>
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-name">portfolio</span>
+                            </div>
+                            <ul class="file-list">
+                                <li class="file-item active" data-file="profile">
+                                    <span class="file-icon json">{}</span>
+                                    <span class="file-name">profile.json</span>
+                                </li>
+                                <li class="file-item" data-file="build">
+                                    <span class="file-icon py">py</span>
+                                    <span class="file-name">what_i_build.py</span>
+                                </li>
+                                <li class="file-item" data-file="skills">
+                                    <span class="file-icon yml">yml</span>
+                                    <span class="file-name">skills_manifest.yml</span>
+                                </li>
+                                <li class="file-item" data-file="workflow">
+                                    <span class="file-icon js">js</span>
+                                    <span class="file-name">workflow_pipeline.js</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
 
-                <article class="service-card reveal-up">
-                    <div class="service-top">
-                        <span class="service-icon">⚙</span>
-                        <h3>Tools &amp; Stack</h3>
-                        <span class="service-no">03</span>
-                    </div>
-                    <p>My stack includes React, Node.js, Express.js, MongoDB, Python, C++, GitHub, and n8n. I use
-                        these tools to connect interface, logic, data, and automation into one clean system.</p>
-                </article>
+                    <!-- Main Editor Area -->
+                    <section class="ide-editor">
+                        <!-- Tabs -->
+                        <div class="ide-tabs">
+                            <div class="ide-tab active" data-file="profile">
+                                <span class="tab-icon json">{}</span>
+                                <span class="tab-name">profile.json</span>
+                            </div>
+                            <div class="ide-tab" data-file="build">
+                                <span class="tab-icon py">py</span>
+                                <span class="tab-name">what_i_build.py</span>
+                            </div>
+                            <div class="ide-tab" data-file="skills">
+                                <span class="tab-icon yml">yml</span>
+                                <span class="tab-name">skills_manifest.yml</span>
+                            </div>
+                            <div class="ide-tab" data-file="workflow">
+                                <span class="tab-icon js">js</span>
+                                <span class="tab-name">workflow_pipeline.js</span>
+                            </div>
+                        </div>
 
-                <article class="service-card reveal-up">
-                    <div class="service-top">
-                        <span class="service-icon">↗</span>
-                        <h3>How I Work</h3>
-                        <span class="service-no">04</span>
-                    </div>
-                    <p>I start with the user flow, then shape the structure, then refine the motion and details. That
-                        keeps the final result focused, readable, and visually strong without adding unnecessary
-                        clutter.</p>
-                </article>
+                        <!-- Code Content Container -->
+                        <div class="code-container">
+                            <div class="line-numbers" id="line-numbers">
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                            </div>
+                            <pre class="code-output"><code id="code-content"></code></pre>
+                        </div>
+                    </section>
+                </div>
             </div>
         </section>
 
         <section class="work section" id="projects">
-            <h2 class="section-title reveal-up">Things <em>I've Designed.</em></h2>
-            <div class="work-slider reveal-up">
-                <button class="arrow" id="work-prev" aria-label="Previous project">&#8592;</button>
-
-                <div class="work-viewport" id="work-viewport">
-                    <a class="work-item" href="https://github.com/Vinilnaik3705/TradeSim.git"
-                        aria-label="Open Trade Simulator GitHub repository">
-                        <div class="work-head">
-                            <span class="work-badge">01</span>
-                            <h3>Trade Simulator</h3>
-                        </div>
-                        <p>A realistic paper-trading environment with live-style market flow, virtual portfolio
-                            tracking, and performance analytics for strategy practice.</p>
-                        <div class="work-tags" aria-label="Trade Simulator stack">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>Express.js</span>
-                            <span>MongoDB</span>
-                        </div>
-                        <ul class="work-points">
-                            <li>Built modular strategy simulation workflows.</li>
-                            <li>Designed clean dashboards for profit, risk, and trend insights.</li>
+            <h2 class="section-title reveal-up">Things <em>I've Built.</em></h2>
+            <div class="projects-list">
+                <!-- Project 1: Kryonex -->
+                <div class="project-item-card reveal-up">
+                    <div class="project-time">JAN 2026 — MAR 2026</div>
+                    <div class="project-details">
+                        <h3 class="project-title">
+                            <a href="https://github.com/Vinilnaik3705/TradeSim.git" target="_blank"
+                                rel="noopener noreferrer">
+                                Kryonex <span class="arrow">↗</span>
+                            </a>
+                        </h3>
+                        <p class="project-description">
+                            AI-powered crypto trading simulator with real-time portfolio tracking, market heatmaps, and
+                            an LLM-based market analyst.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Integrated Groq LLM for live market commentary and trade insights</li>
+                            <li>Built squarified treemap heatmap using d3-hierarchy</li>
+                            <li>Configured real-time reactive streams with Supabase database</li>
                         </ul>
-                    </a>
-                    <a class="work-item" href="https://github.com/Vinilnaik3705/Autonomous_Recruitment_Agent.git"
-                        aria-label="Open HR Automation Agent GitHub repository">
-                        <div class="work-head">
-                            <span class="work-badge">02</span>
-                            <h3>HR Automation Agent</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Vite</span>
+                            <span class="project-tag">Supabase</span>
+                            <span class="project-tag">Groq</span>
+                            <span class="project-tag">D3.js</span>
                         </div>
-                        <p>An AI-assisted HR workflow agent that streamlines candidate screening, interview
-                            coordination, and follow-up communication with faster response cycles.</p>
-                        <div class="work-tags" aria-label="HR Automation Agent stack">
-                            <span>Python</span>
-                            <span>n8n</span>
-                            <span>Node.js</span>
-                            <span>GitHub</span>
-                        </div>
-                        <ul class="work-points">
-                            <li>Automated repetitive recruitment and communication tasks.</li>
-                            <li>Improved consistency across hiring stages and handoffs.</li>
-                        </ul>
-                    </a>
+                    </div>
                 </div>
 
-                <button class="arrow" id="work-next" aria-label="Next project">&#8594;</button>
+                <!-- Project 2: HR Automation Agent -->
+                <div class="project-item-card reveal-up">
+                    <div class="project-time">FEB 2026 — PRESENT</div>
+                    <div class="project-details">
+                        <h3 class="project-title">
+                            <a href="https://github.com/Vinilnaik3705/Autonomous_Recruitment_Agent.git" target="_blank"
+                                rel="noopener noreferrer">
+                                HR Automation Agent <span class="arrow">↗</span>
+                            </a>
+                        </h3>
+                        <p class="project-description">
+                            End-to-end recruiting pipeline automating resume screening, interview scheduling, and
+                            onboarding via agentic workflows.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Reduced manual HR touchpoints across 4 workflow stages using n8n + GPT-4o-mini</li>
+                            <li>Built semantic resume ranking with Sentence Transformers + PostgreSQL</li>
+                            <li>Deployed FastAPI listener endpoints for robust webhooks triggers</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">FastAPI</span>
+                            <span class="project-tag">n8n</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">GPT-4o-mini</span>
+                            <span class="project-tag">Sentence Transformers</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -272,13 +323,12 @@
     </main>
 
     <section class="cta section" id="contact">
-        <h2>Your story, <em>well designed.</em></h2>
-        <p>From first impression to final interaction, I design digital experiences that feel refined, memorable, and
-            built to perform.</p>
+        <h2>Building systems that <em>actually work.</em></h2>
+        <p>Make it work, make it right, make it fast.</p>
         <div class="cta-actions">
             <a href="mailto:vinilnaikdharavath3705@gmail.com?subject=Portfolio%20Collaboration&body=Hi%20there%2C%0A%0AI%20would%20like%20to%20collaborate%20with%20you.%20Please%20share%20your%20availability.%0A%0AThanks."
                 class="btn btn-primary">Let's Collaborate</a>
-            <a href="#work" class="btn btn-secondary">View Portfolio</a>
+            <a href="Vinil_Naik_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View Resume</a>
         </div>
     </section>
 
