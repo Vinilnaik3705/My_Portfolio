@@ -1,11 +1,15 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -46,7 +50,7 @@ export function Hero() {
 
       {/* Portrait */}
       <motion.div
-        style={{ y: imageY, opacity }}
+        style={mounted ? { y: imageY, opacity } : undefined}
         className="absolute right-6 top-24 w-40 overflow-hidden rounded-xl border border-border sm:w-52 md:right-12 md:top-28 md:w-72 lg:w-80"
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -68,7 +72,10 @@ export function Hero() {
         </div>
       </motion.div>
 
-      <motion.div style={{ y: textY, opacity }} className="relative z-10">
+      <motion.div
+        style={mounted ? { y: textY, opacity } : undefined}
+        className="relative z-10"
+      >
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
