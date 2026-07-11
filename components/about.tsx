@@ -1,19 +1,41 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Reveal, WordReveal, SectionLabel } from './reveal'
 
-const stats = [
-  { value: '4+', label: 'Shipped projects' },
-  { value: '735', label: 'LinkedIn followers' },
-  { value: '500+', label: 'Connections' },
-  { value: '2027', label: 'B.Tech, NIT JSR' },
-]
-
 export function About() {
   const ref = useRef<HTMLElement>(null)
+  const [stats, setStats] = useState([
+    { value: '4+', label: 'Shipped projects' },
+    { value: '735', label: 'LinkedIn followers' },
+    { value: '500+', label: 'Connections' },
+    { value: '2027', label: 'B.Tech, NIT JSR' },
+  ])
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch('/api/linkedin')
+        if (res.ok) {
+          const data = await res.json()
+          if (data.stats) {
+            setStats([
+              { value: '4+', label: 'Shipped projects' },
+              { value: data.stats.followers || '735', label: 'LinkedIn followers' },
+              { value: data.stats.connections || '500+', label: 'Connections' },
+              { value: '2027', label: 'B.Tech, NIT JSR' },
+            ])
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load dynamic LinkedIn stats', err)
+      }
+    }
+    fetchStats()
+  }, [])
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
@@ -56,6 +78,7 @@ export function About() {
               </div>
             ))}
           </Reveal>
+
         </div>
 
         <div className="relative flex items-start justify-center gap-6">

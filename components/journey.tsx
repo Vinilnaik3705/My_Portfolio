@@ -1,43 +1,21 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { Reveal, SectionLabel } from './reveal'
 
-const education = [
-  {
-    period: '2023 — 2027',
-    title: 'National Institute of Technology, Jamshedpur',
-    subtitle: 'Bachelor of Technology — Computer Science',
-    detail: 'JavaScript, Python, and core CS fundamentals.',
-  },
-  {
-    period: '2022 — 2023',
-    title: 'Pinegrove Junior College',
-    subtitle: 'Class XII',
-    detail: 'Pre-university education.',
-  },
-]
-
-const certifications = [
-  {
-    period: 'Jun 2026',
-    title: 'Software Engineering Job Simulation',
-    subtitle: 'Wells Fargo — Forage',
-    detail: 'Java, Spring Framework, Systems Design, Data Modeling.',
-  },
-  {
-    period: 'May 2026',
-    title: 'Make Agentic AI Work For You',
-    subtitle: 'IBM',
-    detail: 'RAG, AI Agents, Gen AI, Problem Solving.',
-  },
-]
+interface JourneyItem {
+  period: string
+  title: string
+  subtitle: string
+  detail: string
+}
 
 function Timeline({
   heading,
   items,
 }: {
   heading: string
-  items: typeof education
+  items: JourneyItem[]
 }) {
   return (
     <div>
@@ -73,6 +51,52 @@ function Timeline({
 }
 
 export function Journey() {
+  const [education, setEducation] = useState<JourneyItem[]>([
+    {
+      period: '2023 — 2027',
+      title: 'National Institute of Technology, Jamshedpur',
+      subtitle: 'Bachelor of Technology — Computer Science',
+      detail: 'JavaScript, Python, and core CS fundamentals.',
+    },
+    {
+      period: '2022 — 2023',
+      title: 'Pinegrove Junior College',
+      subtitle: 'Class XII',
+      detail: 'Pre-university education.',
+    },
+  ])
+
+  const [certifications, setCertifications] = useState<JourneyItem[]>([
+    {
+      period: 'Jun 2026',
+      title: 'Software Engineering Job Simulation',
+      subtitle: 'Wells Fargo — Forage',
+      detail: 'Java, Spring Framework, Systems Design, Data Modeling.',
+    },
+    {
+      period: 'May 2026',
+      title: 'Make Agentic AI Work For You',
+      subtitle: 'IBM',
+      detail: 'RAG, AI Agents, Gen AI, Problem Solving.',
+    },
+  ])
+
+  useEffect(() => {
+    async function fetchJourney() {
+      try {
+        const res = await fetch('/api/linkedin')
+        if (res.ok) {
+          const data = await res.json()
+          if (data.education) setEducation(data.education)
+          if (data.certifications) setCertifications(data.certifications)
+        }
+      } catch (err) {
+        console.error('Failed to load dynamic journey items', err)
+      }
+    }
+    fetchJourney()
+  }, [])
+
   return (
     <section id="journey" className="px-6 py-28 md:px-12 md:py-36">
       <SectionLabel index="04" title="Education & Certifications" />
@@ -83,3 +107,4 @@ export function Journey() {
     </section>
   )
 }
+

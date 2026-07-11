@@ -1,0 +1,42 @@
+{
+  "stats": {
+    "followers": "735+",
+    "connections": "500+"
+  },
+  "certifications": [
+    {
+      "period": "Jun 2026",
+      "title": "Software Engineering Job Simulation",
+      "subtitle": "Wells Fargo — Forage",
+      "detail": "Java, Spring Framework, Systems Design, Data Modeling."
+    },
+    {
+      "period": "May 2026",
+      "title": "Make Agentic AI Work For You",
+      "subtitle": "IBM",
+      "detail": "RAG, AI Agents, Gen AI, Problem Solving."
+    }
+  ],
+  "education": [
+    {
+      "period": "2023 — 2027",
+      "title": "National Institute of Technology, Jamshedpur",
+      "subtitle": "Bachelor of Technology — Computer Science",
+      "detail": "JavaScript, Python, and core CS fundamentals."
+    },
+    {
+      "period": "2022 — 2023",
+      "title": "Pinegrove Junior College",
+      "subtitle": "Class XII",
+      "detail": "Pre-university education."
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "date": "July 2026",
+      "content": "Excited to share that I have been diving deep into Agentic AI and automated workflows using FastAPI and n8n! The potential to streamline pipelines is huge.",
+      "url": "https://www.linkedin.com/in/vinilnaik"
+    }
+  ]
+}

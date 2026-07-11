@@ -9,6 +9,7 @@ import { About } from '@/components/about'
 import { Signal } from '@/components/signal'
 import { Skills } from '@/components/skills'
 import { Journey } from '@/components/journey'
+import { LinkedinFeed } from '@/components/linkedin-feed'
 import { Contact } from '@/components/contact'
 
 export default function Home() {
@@ -25,8 +26,10 @@ export default function Home() {
         <Signal />
         <Skills />
         <Journey />
+        <LinkedinFeed />
         <Contact />
       </main>
     </SmoothScroll>
   )
 }
+
