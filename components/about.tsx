@@ -8,9 +8,9 @@ import { Reveal, WordReveal, SectionLabel } from './reveal'
 export function About() {
   const ref = useRef<HTMLElement>(null)
   const [stats, setStats] = useState([
-    { value: '4+', label: 'Shipped projects' },
+    { value: '4', label: 'Shipped projects' },
     { value: '735', label: 'LinkedIn followers' },
-    { value: '500+', label: 'Connections' },
+    { value: '500', label: 'Connections' },
     { value: '2027', label: 'B.Tech, NIT JSR' },
   ])
 
@@ -21,10 +21,12 @@ export function About() {
         if (res.ok) {
           const data = await res.json()
           if (data.stats) {
+            const cleanFollowers = String(data.stats.followers || '735').replace(/\+/g, '').trim()
+            const cleanConnections = String(data.stats.connections || '500').replace(/\+/g, '').trim()
             setStats([
-              { value: '4+', label: 'Shipped projects' },
-              { value: data.stats.followers || '735', label: 'LinkedIn followers' },
-              { value: data.stats.connections || '500+', label: 'Connections' },
+              { value: '4', label: 'Shipped projects' },
+              { value: cleanFollowers, label: 'LinkedIn followers' },
+              { value: cleanConnections, label: 'Connections' },
               { value: '2027', label: 'B.Tech, NIT JSR' },
             ])
           }
